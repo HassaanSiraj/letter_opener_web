@@ -1,12 +1,14 @@
 <style>
-  @media (prefers-color-scheme: dark) {
-      body {
-          background-color: black;
-      }
-      .left, .right {
-          filter: invert(1) hue-rotate(180deg);
-      }
-  }
+  <% if LetterOpenerWeb.config.auto_dark_mode %>
+    @media (prefers-color-scheme: dark) {
+        body {
+            background-color: black;
+        }
+        .left, .right {
+            filter: invert(1) hue-rotate(180deg);
+        }
+    }
+  <% end %>
 
   body {
     margin: 0
