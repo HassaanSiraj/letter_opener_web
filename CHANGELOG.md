@@ -1,5 +1,9 @@
 ## [Unreleased](https://github.com/fgrehm/letter_opener_web/compare/v3.0.0...master)
 
+### Additions
+- Make dark mode color inversion optional via `LetterOpenerWeb.config.auto_dark_mode` (default: `false`).  
+  This avoids double-inversion issues for email templates that already implement `prefers-color-scheme`. [#146]
+
 ## [3.0.0](https://github.com/fgrehm/letter_opener_web/compare/v2.0.0...v3.0.0)
 
 ### Breaking
