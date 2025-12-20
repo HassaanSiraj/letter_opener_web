@@ -6,8 +6,7 @@ require 'rexml/document'
 
 module LetterOpenerWeb
   class Config
-    attr_accessor :letters_location
-    attr_accessor :auto_dark_mode
+    attr_accessor :letters_location, :auto_dark_mode
   end
 
   def self.config
