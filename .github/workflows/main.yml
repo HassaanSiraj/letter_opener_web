@@ -45,6 +45,7 @@ jobs:
           - "3.2"
           - "3.3"
           - "3.4"
+          - "4.0"
           - truffleruby-head
         rails-version:
           - "6_1"
@@ -56,7 +57,11 @@ jobs:
         exclude:
           - ruby-version: "3.4"
             rails-version: "6_1"
+          - ruby-version: "4.0"
+            rails-version: "6_1"
           - ruby-version: "3.4"
+            rails-version: "7_0"
+          - ruby-version: "4.0"
             rails-version: "7_0"
           - ruby-version: "3.1"
             rails-version: "8_0"
