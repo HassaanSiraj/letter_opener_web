@@ -52,6 +52,7 @@ jobs:
           - "7_1"
           - "7_2"
           - "8_0"
+          - "8_1"
         exclude:
           - ruby-version: "3.4"
             rails-version: "6_1"
@@ -59,6 +60,8 @@ jobs:
             rails-version: "7_0"
           - ruby-version: "3.1"
             rails-version: "8_0"
+          - ruby-version: "3.1"
+            rails-version: "8_1"
     env:
       BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails-version }}.gemfile
 
