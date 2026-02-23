@@ -6,15 +6,14 @@ require 'rexml/document'
 
 module LetterOpenerWeb
   class Config
-    attr_accessor :letters_location, :auto_dark_mode
-    attr_accessor :authentication_enabled
-    attr_accessor :username, :password
+    attr_accessor :letters_location, :auto_dark_mode, :authentication_enabled, :username, :password
 
     def basic_auth_enabled?
       authentication_enabled && username.present? && password.present?
     end
+    alias enabled? basic_auth_enabled?
 
-    def validate!
+    def warn_if_basic_auth_misconfigured
       return unless authentication_enabled && (username.blank? || password.blank?)
 
       Rails.logger.warn('[LetterOpenerWeb] authentication_enabled is true but username or password is blank. ' \
@@ -32,7 +31,7 @@ module LetterOpenerWeb
 
   def self.configure
     yield config if block_given?
-    config.validate!
+    config.warn_if_basic_auth_misconfigured
   end
 
   def self.reset!

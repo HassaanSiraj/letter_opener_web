@@ -25,21 +25,24 @@ RSpec.describe LetterOpenerWeb::LettersController do
 
       it 'returns 200 with correct credentials' do
         allow(LetterOpenerWeb::Letter).to receive(:search)
-        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('admin', 'secret')
+        request.env['HTTP_AUTHORIZATION'] =
+          ActionController::HttpAuthentication::Basic.encode_credentials('admin', 'secret')
         get :index
         expect(response.status).to eq(200)
       end
 
       it 'returns 401 with wrong password' do
         allow(LetterOpenerWeb::Letter).to receive(:search)
-        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('admin', 'wrong')
+        request.env['HTTP_AUTHORIZATION'] =
+          ActionController::HttpAuthentication::Basic.encode_credentials('admin', 'wrong')
         get :index
         expect(response.status).to eq(401)
       end
 
       it 'returns 401 with wrong username' do
         allow(LetterOpenerWeb::Letter).to receive(:search)
-        request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('wrong', 'secret')
+        request.env['HTTP_AUTHORIZATION'] =
+          ActionController::HttpAuthentication::Basic.encode_credentials('wrong', 'secret')
         get :index
         expect(response.status).to eq(401)
       end
