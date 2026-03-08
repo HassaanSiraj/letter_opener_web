@@ -11,12 +11,12 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - name: Set up Ruby 3.4
+      - name: Set up latest Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.4"
+          ruby-version: ruby
           bundler-cache: true
 
       - name: Lint with Rubocop
@@ -25,12 +25,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - name: Set up Ruby 3.4
+      - name: Set up latest Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.4"
+          ruby-version: ruby
           bundler-cache: true
 
       - name: Build gem
@@ -45,17 +45,23 @@ jobs:
           - "3.2"
           - "3.3"
           - "3.4"
-          - truffleruby-head
+          - "4.0"
+          - truffleruby-33.0.1
         rails-version:
           - "6_1"
           - "7_0"
           - "7_1"
           - "7_2"
           - "8_0"
+          - "8_1"
         exclude:
           - ruby-version: "3.4"
             rails-version: "6_1"
+          - ruby-version: "4.0"
+            rails-version: "6_1"
           - ruby-version: "3.4"
+            rails-version: "7_0"
+          - ruby-version: "4.0"
             rails-version: "7_0"
           - ruby-version: "3.1"
             rails-version: "8_0"
@@ -63,11 +69,13 @@ jobs:
             rails-version: "6_1"
           - ruby-version: truffleruby-head
             rails-version: "7_0"
+          - ruby-version: "3.1"
+            rails-version: "8_1"
     env:
       BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails-version }}.gemfile
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
