@@ -2,7 +2,7 @@
 
 module LetterOpenerWeb
   class ApplicationController < ActionController::Base
-    before_action :enforce_basic_auth, if: -> { LetterOpenerWeb.config.enabled? }
+    before_action :enforce_basic_auth, if: -> { LetterOpenerWeb.config.basic_auth_enabled? }
 
     protect_from_forgery with: :exception, unless: -> { Rails.configuration.try(:api_only) }
 

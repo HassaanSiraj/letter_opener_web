@@ -11,7 +11,6 @@ module LetterOpenerWeb
     def basic_auth_enabled?
       authentication_enabled && username.present? && password.present?
     end
-    alias enabled? basic_auth_enabled?
 
     def warn_if_basic_auth_misconfigured
       return unless authentication_enabled && (username.blank? || password.blank?)
