@@ -65,6 +65,10 @@ jobs:
             rails-version: "7_0"
           - ruby-version: "3.1"
             rails-version: "8_0"
+          - ruby-version: truffleruby-head
+            rails-version: "6_1"
+          - ruby-version: truffleruby-head
+            rails-version: "7_0"
           - ruby-version: "3.1"
             rails-version: "8_1"
     env:

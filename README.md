@@ -50,6 +50,10 @@ your delivery method on your `config/environments/development.rb`:
 config.action_mailer.delivery_method = :letter_opener_web
 ```
 
+## Configuration
+
+### letters_location
+
 If you're using `:letter_opener_web` as your delivery method, you can change the location of
 the letters by adding the following to an initializer (or in `development.rb`):
 
@@ -58,6 +62,24 @@ LetterOpenerWeb.configure do |config|
   config.letters_location = Rails.root.join('your', 'new', 'path')
 end
 ```
+
+### auto_dark_mode
+
+You can control whether LetterOpenerWeb applies an automatic dark mode
+color inversion strategy when previewing emails.
+
+By default, this is disabled to avoid conflicts with email templates that
+already implement their own `prefers-color-scheme` styling.
+
+```ruby
+LetterOpenerWeb.configure do |config|
+  config.auto_dark_mode = true
+end
+```
+
+When enabled, LetterOpenerWeb applies a CSS-based inversion strategy to
+approximate dark mode for templates that do not define their own styles,
+similar to high-contrast or browser-level color inversion.
 
 ## Usage on pre-production environments
 
